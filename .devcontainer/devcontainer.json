@@ -38,7 +38,8 @@
 			"extensions": [
 				"GitHub.vscode-pull-request-github",
 				"GitHub.copilot-labs",
-				"GitHub.copilot"
+				"GitHub.copilot",
+				"google.colab"
 			]
 		}
 	},
