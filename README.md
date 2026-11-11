@@ -1,3 +1,5 @@
+[![CI](https://github.com/ufuos10/functions-from-zero2/actions/workflows/main.yml/badge.svg)](https://github.com/ufuos10/functions-from-zero2/actions/workflows/main.yml)
+
 # functions-from-zero2
 Learning functions
 
