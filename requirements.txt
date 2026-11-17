@@ -9,4 +9,3 @@ wikipedia
 ipdb
 geopy
 git+https://github.com/LIAAD/yake
-
