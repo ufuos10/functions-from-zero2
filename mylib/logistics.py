@@ -67,5 +67,29 @@ def total_distance(city_names):
     return total_dist
 
 
+def print_cities():
+    """
+    Print the list of available cities.
+    """
+    print("Available cities:")
+    for city in cities.keys():
+        print(f"- {city}")
+
 if __name__ == "__main__":
     print(total_distance(["New York", "Chicago"]))
+    print_cities()
+
+# estimate the travel time between two cities by car.
+# assume the speed is 60 miles per hour
+def travel_time(city1, city2, speed=60):
+    """
+    Estimate the travel time in hours between two cities.
+
+    :param city1: Name of the starting city.
+    :param city2: Name of the destination city.
+    :param speed: Average speed in miles per hour.
+    :return: The travel time in hours.
+    """
+    if speed <= 0:
+        raise ValueError("Speed must be greater than zero")
+    return total_distance([city1, city2]) / speed
