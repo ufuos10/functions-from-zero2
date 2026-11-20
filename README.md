@@ -27,3 +27,4 @@ print(x + y)
 
 ## Step 3: Build a library and use it
 
+## Trying the AWS continuous integration using CodeBuild
