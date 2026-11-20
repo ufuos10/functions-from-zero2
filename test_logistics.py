@@ -5,7 +5,7 @@ from mylib.logistics import (
     get_city_coordinates,
     total_distance,
     print_cities,
-    cities
+    cities,
 )
 
 

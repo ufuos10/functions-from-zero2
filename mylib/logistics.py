@@ -2,6 +2,7 @@
 This module deals with logistics and calculates distances between two points
 and the time it takes to travel and other logistics questions for a given speed.
 """
+
 from geopy import distance
 
 # Coordinates (latitude, longitude) for 20 cities in the USA
@@ -25,7 +26,7 @@ cities = {
     "Indianapolis": (39.7684, -86.1581),
     "Seattle": (47.6062, -122.3321),
     "Denver": (39.7392, -104.9903),
-    "Washington": (38.9072, -77.0369)
+    "Washington": (38.9072, -77.0369),
 }
 
 
@@ -75,9 +76,11 @@ def print_cities():
     for city in cities.keys():
         print(f"- {city}")
 
+
 if __name__ == "__main__":
     print(total_distance(["New York", "Chicago"]))
     print_cities()
+
 
 # estimate the travel time between two cities by car.
 # assume the speed is 60 miles per hour
