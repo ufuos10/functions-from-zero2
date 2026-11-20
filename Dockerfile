@@ -1,11 +1,12 @@
-FROM public.ecr.aws/lambda/python:3.14
+FROM python:3.14-slim
 
-RUN mkdir -p /app
-COPY ./main.py /app/
-COPY mylib/ /app/mylib/
-COPY ./requirements.txt /app/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
-WORKDIR /app
+WORKDIR /code
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY main.py .
+COPY mylib/ mylib/
+
 EXPOSE 8080
-CMD [ "main.py" ]
-ENTRYPOINT [ "python" ]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
