@@ -6,6 +6,7 @@ fastapi
 uvicorn
 black
 wikipedia
+wikipedia-api
 ipdb
 geopy
-git+https://github.com/LIAAD/yake
+yake
