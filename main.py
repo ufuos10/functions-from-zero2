@@ -30,7 +30,7 @@ async def lookup_city(city: City):
         raise HTTPException(status_code=404, detail=f"City not found: {city.name}")
     return {"city": city.name, "latitude": coords[0], "longitude": coords[1]}
 
-@app.post("/")
+@app.get("/")
 async def root():
     """Home Page with GET HTTP Method"""
     return {"message": "Hello Logistics INC"}
