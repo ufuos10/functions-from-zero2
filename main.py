@@ -9,6 +9,13 @@ from mylib.logistics import (
     travel_time,
 )
 
+from mylib.wiki import (
+    get_wiki_summary,
+    get_wiki_keywords,
+    search_wiki_pages,
+    get_wiki_page,
+
+)
 app = FastAPI()
 
 class City(BaseModel):
@@ -63,6 +70,36 @@ async def get_travel_time(city1: str, city2: str, speed: float = 60):
         raise HTTPException(status_code=404, detail=str(e)) from e
     return {"city1": city1, "city2": city2, "speed": speed, "hours": round(hours, 2)}
 
+@app.post("/keywords")
+async def get_keywords(page: str, max_keywords: int = 10):
+    """Get keywords from a Wikipedia page."""
+    keywords = get_wiki_keywords(page, max_keywords)
+    if keywords is None:
+        raise HTTPException(status_code=404, detail=f"Wikipedia page not found: {page}")
+    return {"page": page, "keywords": keywords}
+
+@app.post("/wiki-summary")
+async def get_summary(page: str):
+    """Get the summary of a Wikipedia page."""
+    summary = get_wiki_summary(page)
+    if summary is None:
+        raise HTTPException(status_code=404, detail=f"Wikipedia page not found: {page}")
+    return {"page": page, "summary": summary}
+
+@app.post("/wiki-search")
+async def search_wiki(query: str, results: int = 5):
+    """Search for Wikipedia pages matching a query."""
+    titles = search_wiki_pages(query, results)
+    return {"query": query, "results": titles}
+
+
+@app.post("/wiki-page")
+async def get_page(page: str):
+    """Get a Wikipedia page."""
+    wiki_page = get_wiki_page(page)
+    if wiki_page is None:
+        raise HTTPException(status_code=404, detail=f"Wikipedia page not found: {page}")
+    return {"page": page, "title": wiki_page.title, "text": wiki_page.text}
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8080, host="0.0.0.0")
